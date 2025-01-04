@@ -35,12 +35,12 @@ const SignUp = () => {
 
           <form onSubmit={handleSubmit}>
             <div>
-              <label className={styles.formLabel}>
+              {/* <label className={styles.formLabel}>
                 <span className={styles.labelText}>Full Name</span>
-              </label>
+              </label> */}
               <input
                 type="text"
-                placeholder="John Doe"
+                placeholder="Full Name"
                 className={styles.input}
                 value={inputs.fullName}
                 onChange={(e) =>
@@ -50,12 +50,12 @@ const SignUp = () => {
             </div>
 
             <div>
-              <label className={styles.formLabel}>
+              {/* <label className={styles.formLabel}>
                 <span className={styles.labelText}>Username</span>
-              </label>
+              </label> */}
               <input
                 type="text"
-                placeholder="johndoe"
+                placeholder="Username"
                 className={styles.input}
                 value={inputs.username}
                 onChange={(e) =>
@@ -65,12 +65,12 @@ const SignUp = () => {
             </div>
 
             <div>
-              <label className={styles.formLabel}>
+              {/* <label className={styles.formLabel}>
                 <span className={styles.labelText}>Email</span>
-              </label>
+              </label> */}
               <input
                 type="email"
-                placeholder="johndoe@gmail.com"
+                placeholder="Email"
                 className={styles.input}
                 value={inputs.email}
                 onChange={(e) =>
@@ -80,9 +80,9 @@ const SignUp = () => {
             </div>
 
             <div>
-              <label className={styles.formLabel}>
+              {/* <label className={styles.formLabel}>
                 <span className={styles.labelText}>Password</span>
-              </label>
+              </label> */}
               <input
                 type="password"
                 placeholder="Enter Password"
@@ -95,9 +95,9 @@ const SignUp = () => {
             </div>
 
             <div>
-              <label className={styles.formLabel}>
+              {/* <label className={styles.formLabel}>
                 <span className={styles.labelText}>Confirm Password</span>
-              </label>
+              </label> */}
               <input
                 type="password"
                 placeholder="Confirm Password"
