@@ -1,0 +1,143 @@
+.container {
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url("/bg2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.registerContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 440px;
+  padding: 2rem;
+
+  /* @media screen and (min-width: 700px) {
+    padding: 10rem !important;
+  } */
+}
+
+.registerCard {
+  width: 100%;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: rgba(128, 128, 128, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.registerTitle {
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+  color: #ffffff;
+  letter-spacing: 4px;
+  margin-bottom: 15px;
+}
+
+.highlight {
+  color: #d1f2f6;
+}
+
+.formLabel {
+  display: block;
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
+
+.labelText {
+  font-size: 1rem;
+  color: #e0f7fa;
+  letter-spacing: 1px;
+}
+
+.input {
+  width: 100%;
+  height: 2.5rem;
+  border: 1px solid #248aa3;
+  border-radius: 4px;
+  padding: 0.5rem;
+  background-color: #ffffff;
+  color: #186e76;
+  margin-bottom: 10px;
+}
+
+.link {
+  font-size: 0.875rem;
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: #d1f2f6;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.button {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #000;
+  background-color: #e0f7fa;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  letter-spacing: 2px;
+}
+
+.button:disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+}
+
+/* -------------GENDER CHECKBOX---------------- */
+
+.genderContainer {
+  display: flex;
+  gap: 1rem;
+  margin: 10px 0;
+}
+
+.genderControl {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.genderLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.genderLabel.selected {
+  font-weight: bold;
+  color: #e0f7fa;
+}
+
+.genderText {
+  font-size: 1rem;
+  color: #e0f7fa;
+}
+
+.genderCheckbox {
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid #e0f7fa;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
