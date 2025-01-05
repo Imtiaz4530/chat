@@ -1,19 +1,24 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { toast } from "react-toastify";
 
 import GenderCheckbox from "./GenderCheckbox";
 import styles from "./signup.module.css";
 import Loading from "../../common/Loading";
+import axiosInstance from "../../api/axiosInstance";
+import { AuthContext } from "../../context/authContext";
 
 const SignUp = () => {
   const [inputs, setInputs] = useState({
-    fullName: "",
+    name: "",
     username: "",
     email: "",
     password: "",
     confirmPassword: "",
     gender: "",
   });
+
+  const { setToken, setUser, setShowLogin } = useContext(AuthContext);
 
   let loading = false;
 
@@ -23,6 +28,31 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    try {
+      const { name, email, username, gender, password, confirmPassword } =
+        inputs;
+
+      const res = await axiosInstance.post("/auth/register", {
+        name,
+        username,
+        email,
+        gender,
+        password,
+        confirmPassword,
+      });
+
+      if (res?.data?.success) {
+        setToken(res.data.user.token);
+        setUser(res.data.user);
+
+        localStorage.setItem("talkoToken", res.data.user.token);
+        setShowLogin(false);
+      }
+    } catch (e) {
+      console.log(e);
+      toast.error(e?.response?.data?.message);
+    }
   };
 
   return (
@@ -42,10 +72,8 @@ const SignUp = () => {
                 type="text"
                 placeholder="Full Name"
                 className={styles.input}
-                value={inputs.fullName}
-                onChange={(e) =>
-                  setInputs({ ...inputs, fullName: e.target.value })
-                }
+                value={inputs.name}
+                onChange={(e) => setInputs({ ...inputs, name: e.target.value })}
               />
             </div>
 

@@ -1,16 +1,39 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+
 import styles from "./login.module.css";
 import Loading from "../../common/Loading";
+import axiosInstance from "../../api/axiosInstance";
+import { AuthContext } from "../../context/authContext";
 
 const Login = () => {
-  const [username, setUsername] = useState("");
+  const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
+
+  const { setToken, setUser, setShowLogin } = useContext(AuthContext);
 
   let loading = false;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      const res = await axiosInstance.post("/auth/login", {
+        identifier,
+        password,
+      });
+
+      if (res?.data?.success) {
+        setToken(res.data.user.token);
+        setUser(res.data.user);
+
+        localStorage.setItem("talkoToken", res.data.user.token);
+        setShowLogin(false);
+      }
+    } catch (e) {
+      console.log(e);
+      toast.error(e?.response?.data?.message);
+    }
   };
 
   return (
@@ -28,8 +51,8 @@ const Login = () => {
                 type="text"
                 placeholder="Username or Email"
                 className={styles.formInput}
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                value={identifier}
+                onChange={(e) => setIdentifier(e.target.value)}
               />
             </div>
 
