@@ -2,7 +2,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import Home from "./pages/Home/Home";
+import Chat from "./pages/Chat/ChatBox";
 import Login from "./pages/Login/Login";
 import Signup from "./pages/Signup/Signup";
 import { useContext } from "react";
@@ -14,7 +14,7 @@ const App = () => {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={token ? <Chat /> : <Navigate to="/login" />} />
         <Route
           path="/login"
           element={token ? <Navigate to="/" /> : <Login />}
