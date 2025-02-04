@@ -2,32 +2,31 @@
 import { useEffect, useRef } from "react";
 
 import styles from "../../pages/Chat/chat.module.css";
+import useGetMessages from "../../hooks/chat/useGetMessages";
+import useListenMessages from "../../hooks/chat/useListenMessages";
+import Message from "./Message";
 
-const ChatMiddle = ({ chats }) => {
+const ChatMiddle = () => {
   const chatContainerRef = useRef(null);
+
+  const { loading, messages } = useGetMessages();
+  useListenMessages();
 
   useEffect(() => {
     if (chatContainerRef.current) {
-      chatContainerRef.current.scrollTop =
-        chatContainerRef.current.scrollHeight;
+      setTimeout(() => {
+        chatContainerRef.current.scrollTop =
+          chatContainerRef.current.scrollHeight;
+      }, 100);
     }
-  }, [chats]);
+  }, [messages, loading]);
 
   return (
     <div ref={chatContainerRef} className={styles.chat_chatMiddle_container}>
-      {chats.map((chat) => (
-        <div
-          key={chat.id}
-          className={`${styles.chat_chatMiddle_message} ${
-            chat.isOutgoing
-              ? styles.chat_chatMiddle_outgoing
-              : styles.chat_chatMiddle_incoming
-          }`}
-        >
-          <p className={styles.chat_chatMiddle_messageText}>{chat.message}</p>
-          <p className={styles.chat_chatMiddle_time}>{chat.time}</p>
-        </div>
-      ))}
+      {messages &&
+        messages.map((message) => (
+          <Message message={message} key={message._id} />
+        ))}
     </div>
   );
 };

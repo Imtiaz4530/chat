@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import {
   FaUserCircle,
@@ -16,7 +17,7 @@ import { MdBlock } from "react-icons/md";
 
 import styles from "../../pages/Chat/chat.module.css";
 
-const ChatInfo = () => {
+const ChatInfo = ({ selectedConversation }) => {
   const [activeDropdown, setActiveDropdown] = useState(null);
 
   const toggleDropdown = (dropdownName) => {
@@ -28,11 +29,15 @@ const ChatInfo = () => {
       {/* Avatar and Name */}
       <div className={styles.info_header}>
         <img
-          src="https://via.placeholder.com/100"
+          src={selectedConversation?.profilePicture}
           alt="User Avatar"
           className={styles.info_avatar}
         />
-        <h3 className={styles.info_name}>John Doe</h3>
+        <h3 className={styles.info_name}>
+          {selectedConversation?.name.length > 30
+            ? selectedConversation?.name.substring(0, 30) + "..."
+            : selectedConversation?.name}
+        </h3>
       </div>
 
       {/* Icons with Labels */}

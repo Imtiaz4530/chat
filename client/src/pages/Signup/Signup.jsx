@@ -33,7 +33,7 @@ const SignUp = () => {
       const { name, email, username, gender, password, confirmPassword } =
         inputs;
 
-      const res = await axiosInstance.post("/auth/register", {
+      const res = await axiosInstance.post("/api/auth/register", {
         name,
         username,
         email,
@@ -43,10 +43,11 @@ const SignUp = () => {
       });
 
       if (res?.data?.success) {
-        setToken(res.data.user.token);
-        setUser(res.data.user);
+        setToken(res?.data?.user?.token);
+        setUser(res?.data?.user);
 
-        localStorage.setItem("talkoToken", res.data.user.token);
+        localStorage.setItem("talkoToken", res?.data?.user?.token);
+        localStorage.setItem("talkoUser", JSON.stringify(res?.data?.user));
         setShowLogin(false);
       }
     } catch (e) {

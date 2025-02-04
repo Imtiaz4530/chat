@@ -5,7 +5,12 @@ import ChatInfo from "../chat/ChatInfo";
 import styles from "./Drawer.module.css";
 import { useEffect, useRef } from "react";
 
-const Drawer = ({ isOpen, handleInfoDrawerOpen, setIsOpen }) => {
+const Drawer = ({
+  isOpen,
+  handleInfoDrawerOpen,
+  setIsOpen,
+  selectedConversation,
+}) => {
   const drawerRef = useRef(null);
 
   useEffect(() => {
@@ -34,7 +39,7 @@ const Drawer = ({ isOpen, handleInfoDrawerOpen, setIsOpen }) => {
             className={styles.infoDrawer_closeIcon}
             onClick={handleInfoDrawerOpen}
           />
-          <ChatInfo />
+          <ChatInfo selectedConversation={selectedConversation} />
         </div>
       </div>
     </div>

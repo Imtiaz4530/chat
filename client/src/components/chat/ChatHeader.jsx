@@ -1,36 +1,41 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
-import { FaVideo, FaPhone, FaInfoCircle } from "react-icons/fa";
+import { FaVideo, FaPhone, FaInfoCircle, FaArrowLeft } from "react-icons/fa";
 
 import styles from "../../pages/Chat/chat.module.css";
 import Drawer from "../drawer/Drawer";
 
-const ChatHeader = ({ user, screenWidth }) => {
+const ChatHeader = ({ screenWidth, selectedConversation, onlineUsers }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleInfoDrawerOpen = () => {
     setIsOpen((prev) => !prev);
   };
 
+  const isActive = onlineUsers.includes(selectedConversation?._id);
+
   return (
     <>
       <div className={styles.chatHeader}>
         {/* Left Section: Avatar and Name */}
         <div className={styles.avatarName}>
+          {screenWidth <= 700 && <FaArrowLeft />}
           <img
-            src={user.avatar}
-            alt={`${user.name}'s avatar`}
+            src={selectedConversation?.profilePicture}
+            alt={`${selectedConversation?.name}'s avatar`}
             className={styles.chatHeaderAvatar}
           />
           <div className={styles.userInfo}>
             <p className={styles.chatHeaderName}>
-              {user.name.length > 30
-                ? user.name.substring(0, 30) + "..."
-                : user.name}
+              {screenWidth < 500
+                ? selectedConversation?.name.length > 12
+                  ? selectedConversation?.name.substring(0, 12) + "..."
+                  : selectedConversation?.name
+                : selectedConversation?.name.length > 24
+                ? selectedConversation?.name.substring(0, 24) + "..."
+                : selectedConversation?.name}
             </p>
-            <p className={styles.status}>
-              {user.isActive ? "Online" : "Offline"}
-            </p>
+            <p className={styles.status}>{isActive ? "Online" : "Offline"}</p>
           </div>
         </div>
 
@@ -52,6 +57,7 @@ const ChatHeader = ({ user, screenWidth }) => {
           isOpen={isOpen}
           handleInfoDrawerOpen={handleInfoDrawerOpen}
           setIsOpen={setIsOpen}
+          selectedConversation={selectedConversation}
         />
       )}
     </>

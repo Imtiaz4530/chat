@@ -5,11 +5,22 @@ import "react-toastify/dist/ReactToastify.css";
 import Chat from "./pages/Chat/ChatBox";
 import Login from "./pages/Login/Login";
 import Signup from "./pages/Signup/Signup";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "./context/authContext";
+import { useStoreActions } from "easy-peasy";
 
 const App = () => {
-  const { token } = useContext(AuthContext);
+  const initializeSocket = useStoreActions(
+    (actions) => actions.socket.initializeSocket
+  );
+
+  const { token, user } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (user) {
+      initializeSocket(user);
+    }
+  }, [user, initializeSocket]);
 
   return (
     <div>
