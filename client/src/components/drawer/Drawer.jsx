@@ -2,7 +2,7 @@
 import { RiCloseFill } from "react-icons/ri";
 
 import ChatInfo from "../chat/ChatInfo";
-import styles from "./Drawer.module.css";
+import styles from "./drawer.module.css";
 import { useEffect, useRef } from "react";
 
 const Drawer = ({
