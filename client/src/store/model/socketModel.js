@@ -16,14 +16,8 @@ const socketModel = {
 
   initializeSocket: thunk((actions, payload) => {
     if (payload) {
-      // const socket = io(import.meta.env.VITE_BACKEND_URL, {
-      //   query: { userId: payload.id },
-      // });
-
       const socket = io(import.meta.env.VITE_BACKEND_URL, {
         query: { userId: payload.id },
-        transports: ["polling"],
-        withCredentials: true,
       });
 
       actions.setSocket(socket);
