@@ -4,15 +4,15 @@ import { StoreProvider } from "easy-peasy";
 
 import "./index.css";
 import App from "./App.jsx";
-import AuthContextProviderr from "./context/AuthContext.jsx";
+import AuthContextProvider from "./context/AuthContext.jsx";
 import store from "./store/store.js";
 
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
-    <AuthContextProviderr>
+    <AuthContextProvider>
       <StoreProvider store={store}>
         <App />
       </StoreProvider>
-    </AuthContextProviderr>
+    </AuthContextProvider>
   </BrowserRouter>
 );

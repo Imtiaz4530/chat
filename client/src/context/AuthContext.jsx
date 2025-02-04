@@ -4,7 +4,7 @@ import { createContext, useEffect, useState } from "react";
 // eslint-disable-next-line react-refresh/only-export-components
 export const AuthContext = createContext();
 
-const AuthContextProviderr = ({ children }) => {
+const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [showLogin, setShowLogin] = useState(false);
   const [token, setToken] = useState(localStorage.getItem("talkoToken"));
@@ -32,4 +32,4 @@ const AuthContextProviderr = ({ children }) => {
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
 
-export default AuthContextProviderr;
+export default AuthContextProvider;

@@ -6,7 +6,7 @@ import Chat from "./pages/Chat/ChatBox";
 import Login from "./pages/Login/Login";
 import Signup from "./pages/Signup/Signup";
 import { useContext, useEffect } from "react";
-import { AuthContext } from "./context/authContext";
+import { AuthContext } from "./context/AuthContext";
 import { useStoreActions } from "easy-peasy";
 
 const App = () => {

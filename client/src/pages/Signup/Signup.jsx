@@ -6,7 +6,7 @@ import GenderCheckbox from "./GenderCheckbox";
 import styles from "./signup.module.css";
 import Loading from "../../common/Loading";
 import axiosInstance from "../../api/axiosInstance";
-import { AuthContext } from "../../context/authContext";
+import { AuthContext } from "../../context/AuthContext";
 
 const SignUp = () => {
   const [inputs, setInputs] = useState({

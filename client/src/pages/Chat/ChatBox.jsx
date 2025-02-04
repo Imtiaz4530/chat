@@ -4,7 +4,6 @@ import ChatInfo from "../../components/chat/ChatInfo";
 import ChatLists from "../../components/chat/ChatLists";
 
 import styles from "./chat.module.css";
-import useGetConversation from "../../hooks/chat/useGetConversation";
 import { useStoreState } from "easy-peasy";
 import NoChat from "../../components/chat/NoChat";
 

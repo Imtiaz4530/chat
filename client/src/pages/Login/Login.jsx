@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import styles from "./login.module.css";
 import Loading from "../../common/Loading";
 import axiosInstance from "../../api/axiosInstance";
-import { AuthContext } from "../../context/authContext";
+import { AuthContext } from "../../context/AuthContext";
 
 const Login = () => {
   const [identifier, setIdentifier] = useState("");
