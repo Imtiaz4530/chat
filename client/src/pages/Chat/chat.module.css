@@ -135,7 +135,7 @@
 }
 /* ----------- CHAT ---------- */
 .chatContainer {
-  display: flex !important;
+  display: flex;
   flex-direction: column;
   height: 100vh;
 }

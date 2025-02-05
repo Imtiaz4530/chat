@@ -15,7 +15,8 @@ const Chat = ({
     <div
       className={styles.chatContainer}
       style={{
-        display: screenWidth <= 700 && isChatClicked ? "flex" : "none",
+        display:
+          screenWidth <= 700 ? (isChatClicked ? "flex" : "none") : "flex",
       }}
     >
       <ChatHeader

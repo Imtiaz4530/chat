@@ -19,6 +19,8 @@ const ChatBox = () => {
     setScreenWidth(window.innerWidth);
   };
 
+  console.log(isChatClicked);
+
   useEffect(() => {
     window.addEventListener("resize", updateScreenWidth);
 
