@@ -45,6 +45,7 @@ const ChatBox = () => {
             isChatClicked={isChatClicked}
             selectedConversation={selectedConversation}
             onlineUsers={onlineUsers}
+            setIsChatClicked={setIsChatClicked}
           />
 
           {screenWidth > 1350 && (

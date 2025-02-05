@@ -9,6 +9,7 @@ const Chat = ({
   isChatClicked,
   selectedConversation,
   onlineUsers,
+  setIsChatClicked,
 }) => {
   return (
     <div
@@ -21,6 +22,7 @@ const Chat = ({
         screenWidth={screenWidth}
         selectedConversation={selectedConversation}
         onlineUsers={onlineUsers}
+        setIsChatClicked={setIsChatClicked}
       />
       <ChatMiddle />
       <ChatBottom />

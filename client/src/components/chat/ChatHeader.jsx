@@ -5,7 +5,12 @@ import { FaVideo, FaPhone, FaInfoCircle, FaArrowLeft } from "react-icons/fa";
 import styles from "../../pages/Chat/chat.module.css";
 import Drawer from "../drawer/Drawer";
 
-const ChatHeader = ({ screenWidth, selectedConversation, onlineUsers }) => {
+const ChatHeader = ({
+  screenWidth,
+  selectedConversation,
+  onlineUsers,
+  setIsChatClicked,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleInfoDrawerOpen = () => {
@@ -14,12 +19,16 @@ const ChatHeader = ({ screenWidth, selectedConversation, onlineUsers }) => {
 
   const isActive = onlineUsers.includes(selectedConversation?._id);
 
+  const handleBackToChatList = () => {
+    setIsChatClicked(false);
+  };
+
   return (
     <>
       <div className={styles.chatHeader}>
         {/* Left Section: Avatar and Name */}
         <div className={styles.avatarName}>
-          {screenWidth <= 700 && <FaArrowLeft />}
+          {screenWidth <= 700 && <FaArrowLeft onClick={handleBackToChatList} />}
           <img
             src={selectedConversation?.profilePicture}
             alt={`${selectedConversation?.name}'s avatar`}
